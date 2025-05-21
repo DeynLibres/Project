@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+/* .hero {
+    background-color: #f8f9fa;
+    padding: 100px 0;
+    text-align: center;
+} */
+.about, .products, .contact {
+    padding: 60px 0;
+}
+.logo {
+    height: 50px;
+}
+footer {
+    background-color: #212529;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+}
+.row{
+    align-items: center;
+}
+.banner{
+    background-color: black;
+    color: #fdc92e;
+}
+.banner img {
+    width: 50rem;
+}
+ul li{
+    color: #fdc92e;
+}
