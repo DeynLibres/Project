@@ -1,14 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
-/* .hero {
-    background-color: #f8f9fa;
-    padding: 100px 0;
-    text-align: center;
-} */
 .about, .products, .contact {
     padding: 60px 0;
 }
+/* .about{
+    background-color: black;
+} */
 .logo {
-    height: 50px;
+    height: 80px;
 }
 footer {
     background-color: #212529;
@@ -16,16 +14,57 @@ footer {
     text-align: center;
     padding: 20px 0;
 }
-.row{
-    align-items: center;
+.about img{
+    max-width: 100%;
+    height: auto;
+    display: block;
 }
+/* .row{
+    align-items: center;
+} */
 .banner{
-    background-color: black;
+    height: 100vh;
+    background-color: #f1f1f1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     color: #fdc92e;
 }
 .banner img {
-    width: 50rem;
+    max-width: 100%;
+    height: auto;
 }
-ul li{
-    color: #fdc92e;
+.banner h3{
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #212529;
+    margin-bottom: 15px;
+}
+.banner p {
+    font-size: 1.25rem;
+    color: #6c757d; 
+    margin-bottom: 20px;
+}
+.banner .btn {
+    font-size: 1rem;
+    padding: 10px 20px;
+}
+video {
+    display: block; /* Ensure the video is displayed as a block element */
+    width: 100%; /* Make it responsive */
+    height: auto; /* Keep the aspect ratio */
+}
+/* Responsiveness adjustments */
+@media (max-width: 768px) {
+    .banner .col-sm-6 {
+        text-align: center; /* Center text and image on smaller screens */
+    }
+
+    .banner h3 {
+        font-size: 2rem; /* Smaller font for smaller screens */
+    }
+
+    .banner p {
+        font-size: 1rem; /* Smaller text */
+    }
 }
