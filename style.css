@@ -1,27 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
-.about, .products, .contact {
-    padding: 60px 0;
+
+*{
+  font-family: roboto;
 }
-/* .about{
-    background-color: black;
-} */
 .logo {
     height: 80px;
 }
-footer {
-    background-color: #212529;
-    color: #fff;
-    text-align: center;
-    padding: 20px 0;
+.about, .products, .contact {
+    padding: 60px 0;
 }
 .about img{
     max-width: 100%;
     height: auto;
     display: block;
 }
-/* .row{
-    align-items: center;
-} */
 .banner{
     height: 100vh;
     background-color: #f1f1f1;
@@ -29,10 +21,6 @@ footer {
     align-items: center;
     justify-content: center;
     color: #fdc92e;
-}
-.banner img {
-    max-width: 100%;
-    height: auto;
 }
 .banner h3{
     font-size: 2.5rem;
@@ -50,9 +38,87 @@ footer {
     padding: 10px 20px;
 }
 video {
-    display: block; /* Ensure the video is displayed as a block element */
-    width: 100%; /* Make it responsive */
-    height: auto; /* Keep the aspect ratio */
+    display: block;
+    width: 100%;
+    height: auto;
+}
+/*  */
+
+.contact-header {
+      text-align: center;
+      margin-bottom: 40px;
+}
+.map-container {
+      height: 300px;
+      width: 100%;
+      border-radius: 10px;
+      overflow: hidden;
+}
+
+/* carousel */
+  .carousel-container {
+    position: relative;
+    padding: 0 60px; /* space for buttons */
+  }
+
+  .carousel-control-prev,
+  .carousel-control-next {
+    width: 40px;
+    height: 40px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 50%;
+    z-index: 10;
+    cursor: pointer;
+  }
+
+  .carousel-control-prev {
+    left: 0;
+  }
+
+  .carousel-control-next {
+    right: 0;
+  }
+
+  .carousel-inner .row {
+    flex-wrap: nowrap !important;
+  }
+
+  .item-box {
+    text-align: center;
+    cursor: pointer;
+    padding: 10px;
+    transition: transform 0.2s;
+    flex: 0 0 calc(100% / 7); /* 7 items per row */
+  }
+
+  .item-box:hover {
+    transform: scale(1.05);
+  }
+
+  .item-box img {
+    width: 100px;
+    height: 100px;
+    display: block;
+    margin: 0 auto;
+  }
+
+  #detailsSection {
+    margin-top: 40px;
+    text-align: center;
+  }
+
+  #detailsSection img {
+    width: 150px;
+    height: 150px;
+  }
+
+  footer {
+    background-color: #212529;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
 }
 /* Responsiveness adjustments */
 @media (max-width: 768px) {
@@ -67,4 +133,89 @@ video {
     .banner p {
         font-size: 1rem; /* Smaller text */
     }
+}
+/* .item-box {
+  position: relative;
+  z-index: 5;
+} */
+
+  #promoCarousel .carousel-inner {
+    min-height: 450px; /* Sets fixed space to prevent layout shift */
+  }
+
+  #promoCarousel .carousel-item {
+    min-height: 450px; /* Matches above */
+  }
+
+  #promoCarousel img {
+    max-height: 250px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+  }
+
+  #promoCarousel .col-md-6 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+    #promoCarousel {
+    background-color: #ffffff;
+    border-radius: 8px; /* optional: smooth corners */
+    padding: 30px 15px; /* optional: some inner space */
+    color: black; /* make text readable on dark background */
+  }
+
+  /* Optional: ensure headings and paragraphs are white too */
+  #promoCarousel h3,
+  #promoCarousel p {
+    color: black;
+  }
+
+  #products{
+    background-color: #f1f1f1;
+  }
+
+
+  /* try */
+.product-icon {
+      cursor: pointer;
+      text-align: center;
+      /* border: 1px solid #ddd; */
+      /* padding: 15px; */
+      border-radius: 5px;
+      transition: background-color 0.2s;
+    }
+    /* .product-icon:hover {
+      background-color: #f8f9fa;
+    } */
+    .sub-item {
+      cursor: pointer;
+      border: 1px solid #ccc;
+      padding: 10px;
+      border-radius: 5px;
+      text-align: center;
+      font-weight: 500;
+      transition: background-color 0.2s;
+    }
+    .sub-item:hover {
+      background-color: #e9ecef;
+    }
+    .available {
+      color: green;
+      font-weight: bold;
+      margin-left: 10px;
+    }
+    #productDetailView img {
+      max-width: 100%;
+      height: auto;
+    }
+    #productDetailView {
+  margin-top: 2rem;
+}
+
+#detailImage {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
 }
