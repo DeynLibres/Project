@@ -9,12 +9,6 @@ document.querySelectorAll('.navbar-nav .nav-link').forEach(link => {
 });
 
 document.addEventListener("DOMContentLoaded", () => {
-  // showDetails("Pictures/engine.png", "Engine Parts", "Critical components that power your vehicle.");
-  // showSubItems("engine"); // This line shows the sub-items on page load
-  // const firstEngineItem = subItems["engine"]?.[0];
-  // if (firstEngineItem) {
-  //   showDetail(firstEngineItem, false);
-  // }
   showAllSubItems();
 });
 
@@ -115,8 +109,7 @@ items.forEach(item => {
   document.getElementById("productDetailView")?.classList?.add("d-none");
 }
 
-function showDetail(item) {
-  
+function showDetail(item) { 
   const titleContainer = document.getElementById("detailTitle");
     titleContainer.textContent = item.title;
 
@@ -135,11 +128,15 @@ function showDetail(item) {
     carouselInner.appendChild(slide);
   });
 
+  const header = titleContainer.parentElement;
+  header.classList.add("d-flex", "align-items-center", "justify-content-between");
 
-//   const carousel = document.getElementById("carouselIndicators");
+  const existingDropdown = header.querySelector(".dropdown");
+  if (existingDropdown) existingDropdown.remove();
 
-  const dropdownDiv = document.createElement("div");
+
   if (item.sizes && item.sizes.length > 0) {
+  const dropdownDiv = document.createElement("div");
   dropdownDiv.className = "dropdown";
   dropdownDiv.innerHTML = `
     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
@@ -151,12 +148,6 @@ function showDetail(item) {
       `).join('')}
     </ul>
   `;
-  const header = titleContainer.parentElement
-  header.classList.add("d-flex", "align-items-center", "justify-content-between");
-
-  const existingDropdown = header.querySelector(".dropdown");
-  if (existingDropdown) existingDropdown.remove();
-
   header.appendChild(dropdownDiv);
 
   dropdownDiv.querySelectorAll(".size-option").forEach(option => {
@@ -166,10 +157,6 @@ function showDetail(item) {
       const filteredImages = item.images.filter(img => img.includes(selectedSize));
 
       carouselInner.innerHTML = "";
-
-      if (filteredImages.length === 0) {
-        filteredImages.push("https://via.placeholder.com/800x400?text=No+Images+for+Selected+Size");
-      }
 
         (filteredImages.length > 0 ? filteredImages : ["https://via.placeholder.com/800x400?text=No+Images+for+Selected+Size"])
         .forEach((img, index) => {
@@ -204,6 +191,8 @@ function showDetail(item) {
   const container = document.getElementById('subItemContainer');
   container.innerHTML = "";
 
+    document.getElementById("allSubItemsGrid").style.display = "none";
+
   if (input === "") {
     showSubItems("engine");
     return;
@@ -211,7 +200,7 @@ function showDetail(item) {
 
   let matches = [];
 
-  // Search across all categories
+
   for (const category in subItems) {
     subItems[category].forEach(item => {
       if (item.title && item.title.toLowerCase().includes(input)) {
@@ -223,13 +212,25 @@ function showDetail(item) {
   if (matches.length === 0) {
     container.innerHTML = "<p>No matching products found.</p>";
   } else {
-    matches.forEach(item => {
-      const div = document.createElement("div");
-      div.className = "col-md-3 sub-item";
-      div.textContent = item.title;
-      div.onclick = () => showDetail(item);
-      container.appendChild(div);
-    });
+    const grid = document.createElement("div");
+grid.className = "sub-item-grid";
+
+matches.forEach(item => {
+  const firstImage = item.images && item.images.length > 0 ? item.images[0] : "https://via.placeholder.com/180";
+
+const card = document.createElement("div");
+card.className = "sub-item-card";
+card.innerHTML = `
+  <div class="image-wrapper">
+    <img src="${firstImage}" alt="${item.title}">
+    <div class="hover-title">${item.title}</div>
+  </div>
+`;
+  card.onclick = () => showDetail(item);
+  grid.appendChild(card);
+});
+
+container.appendChild(grid);
   }
   document.getElementById("subItemsGrid").style.display = "block";
   document.getElementById("productDetailView").classList.add("d-none");
@@ -268,59 +269,6 @@ function showAllSubItems() {
 
   container.appendChild(grid);
 
-  // Hide other views
   document.getElementById("subItemsGrid").style.display = "none";
   document.getElementById("productDetailView").classList.add("d-none");
 }
-
-
-
-
-// Show details of a product category
-// function showDetails(imageSrc, title, description) {
-//   document.getElementById("detailsImage").src = imageSrc;
-//   document.getElementById("detailsTitle").textContent = title;
-//   document.getElementById("detailsDescription").textContent = description;
-//   document.getElementById("detailsImage").style.display = "block";
-// }
-
-  // document.getElementById("detailImage").src = item.image;
-    // document.getElementById("productDetailView").classList.remove("d-none");
-
-    // function showSubItems(category) {
-//     const items = subItems[category];
-//     const container = document.getElementById("subItemContainer");
-//     container.innerHTML = "";
-
-//     if (!items || items.length === 0) {
-//       container.innerHTML = "<p>No items found.</p>";
-//       return;
-//     }
-
-//     items.forEach(item => {
-//       if (!item.title) return;
-
-//       const div = document.createElement("div");
-//       div.className = "col-md-3 sub-item";
-//       div.textContent = item.title; 
-//       div.onclick = () => showDetail(item);
-//       container.appendChild(div);
-//     });
-
-//     document.getElementById("subItemsGrid").style.display = "block";
-//     document.getElementById("productDetailView").classList.add("d-none");
-
-    // if (items[0] && items[0].title) {
-    //   showDetail(items[0], false);
-    // }
-  
-
-  // document.getElementById("productDetailView").classList.remove("d-none");
-
-
-  
-
-  //   if (scroll) {
-  //     document.getElementById("productDetailView").scrollIntoView({ behavior: "smooth" });
-  //   }
-  // }
